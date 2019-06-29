@@ -282,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/29/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/29/ml-note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bilaer">
@@ -302,7 +302,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/06/29/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+                <a href="/2019/06/29/ml-note/" class="post-title-link" itemprop="url">PRML Reading Note 1 - 1.5.5 Square Loss Step By Step Proof</a>
               
             
           </h1>
@@ -327,7 +327,7 @@
                 
               
 
-              <time title="Created: 2019-06-29 00:35:08 / Modified: 11:25:59" itemprop="dateCreated datePublished" datetime="2019-06-29T00:35:08+08:00">2019-06-29</time>
+              <time title="Created: 2019-06-29 11:31:21 / Modified: 23:00:52" itemprop="dateCreated datePublished" datetime="2019-06-29T11:31:21+08:00">2019-06-29</time>
             </span>
           
 
@@ -371,8 +371,185 @@
       
         
           
-            <h2 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h2><h2 id="This-bilaer"><a href="#This-bilaer" class="headerlink" title="This bilaer"></a>This bilaer</h2><p>$$\frac{\partial u}{\partial t}<br>= h^2 \left( \frac{\partial^2 u}{\partial x^2} +<br>\frac{\partial^2 u}{\partial y^2} +<br>\frac{\partial^2 u}{\partial z^2}\right)$$</p>
+            <h1 id="Preliminary"><a href="#Preliminary" class="headerlink" title="Preliminary"></a>Preliminary</h1><ol>
+<li><script type="math/tex; mode=display">\mathbb{E}[X] = \mathbb{E}[\mathbb{E}(X|Y)]</script></li>
+<li><script type="math/tex; mode=display">Var[X] = \mathbb{E}[X^2] - \mathbb{E}[X]^2</script></li>
+</ol>
+<h1 id="Proof"><a href="#Proof" class="headerlink" title="Proof"></a>Proof</h1><p>Firstly, we can expand the square term as book:</p>
+<script type="math/tex; mode=display">\begin{align*}\mathbb{E}[L] &= \mathbb{E}[(y(\mathbf(x)) - \mathbb{E}[t|\mathbf{x}] + \mathbb{E}[t|\mathbf{x}] - t)^2] \\
+&= \mathbb{E}[(y(\mathbf(x)) - \mathbb{E}[t|\mathbf{x}])^2 +2(y(\mathbf(x)) - \mathbb{E}[t|\mathbf{x}])(\mathbb{E}[t|\mathbf{x}] - t) + (\mathbb{E}[t|\mathbf{x}] - t)^2]\end{align*}</script><p>Then using Law of Total Expectation, we can obtain:</p>
+<script type="math/tex; mode=display">\begin{align*}\mathbb{E}[L] &= \mathbb{E}_{t}[\mathbb{E}[L|\mathbf{x}]] \\
+&= \mathbb{E}_{t}[\mathbb{E}[(y(\mathbf{x}) - \mathbb{E}[t|\mathbf{x}])^2 + 2(y(\mathbf{x}) - \mathbb{E}[t|\mathbf{x}])(\mathbb{E}[t|\mathbf{x}] - t) + (\mathbb{E}[t|\mathbf{x}] - t)^2|\mathbf{x}]] \\
+&= \mathbb{E}_{t}[\mathbb{E}[(y(\mathbf{x}) - \mathbb{E}[t|\mathbf{x}])^2|\mathbf{x}]] + \mathbb{E}[2(y(\mathbf{x}) - \mathbb{E}[t|\mathbf{x}])(\mathbb{E}[t|\mathbf{x}] - t)|\mathbb{x}]] \\
+&+ \mathbb{E}[(\mathbb{E}[t|\mathbf{x}] - t)^2|\mathbf{x}]]
+\end{align*}</script><p>Now let us focus on the first part $\mathbb{E}_{t}[\mathbb{E}[(y(\mathbf{x}) - \mathbb{E}<br>[t|\mathbf{x}])^2|\mathbf{x}]]$<br>We can actually ignore the the outside expecation and focus on thing inside:</p>
+<script type="math/tex; mode=display">\begin{align*}\mathbb{E}_{t}[\mathbb{E}[(y(\mathbf{x}) - \mathbb{E}[t|\mathbf{x}])^2|\mathbf{x}] &= \mathbb{E}_{t}[\mathbb{E}[(y(\mathbf{x})^2 - 2y(\mathbf{x})\mathbb{E}[t|\mathbf{x}] + (\mathbb{E}_{t}[t|\mathbf{x}])^2|\mathbf{x}]] \\
+&= \mathbb{E}_{t}[\mathbb{E}[y(\mathbf{x})^2|\mathbf{x}] - \mathbb{E}[(2y(\mathbf{x})\mathbb{E}[t|\mathbf{x}])|\mathbf{x}] + \mathbb{E}[(\mathbb{E}_{t}[t|\mathbf{x}])^2|\mathbf{x}]] \\
+&= \mathbb{E}_{t}[\mathbb{E}[y(\mathbf{x})^2|\mathbf{x}] - 2\mathbb{E}[y(\mathbf{x})|\mathbf{x}]\mathbb{E}[\mathbb{E}[t|\mathbf{x}]|\mathbf{x}] + \mathbb{E}[(\mathbb{E}_{t}[t|\mathbf{x}])^2|\mathbf{x}]]\end{align*}</script><p>Notice that $\mathbb{E}[t|\mathbf{x}]$ and $\mathbb{E}_{t}[t|\mathbf{x}])^2$ are constant (expectation is constant). Since the expectation of constant is also constant, we can take them out of the expecation: $\mathbb{E}_{t}[(\mathbb{E}_{t}[t|\mathbf{x}])^2|\mathbf{x}] = \mathbb{E}_{t}[t|\mathbf{x}]^2<br>, \mathbb{E}_{t}[\mathbb{E}[t|\mathbf{x}]|\mathbf{x}] = \mathbb{E}[t|\mathbf{x}]$</p>
+<script type="math/tex; mode=display">\begin{align*}&\mathbb{E}_{t}[\mathbb{E}[y(\mathbf{x})^2|\mathbf{x}] - 2\mathbb{E}[y(\mathbf{x})|\mathbf{x}]\mathbb{E}[\mathbb{E}[t|\mathbf{x}]|\mathbf{x}] + \mathbb{E}[(\mathbb{E}_{t}[t|\mathbf{x}])^2|\mathbf{x}]] \\
+&= \mathbb{E}_{t}[\mathbb{E}[y(\mathbf{x})^2|\mathbf{x}] - 2\mathbb{E}[y(\mathbf{x})|\mathbf{x}]\mathbb{E}[t|\mathbf{x}] + \mathbb{E}[t|\mathbf{x}]^2] \\
+&= \mathbb{E}_{t}[(y(\mathbf{x}) - \mathbb{E}_{t}[t|\mathbf{x}])^2|\mathbf{x}]\end{align*}</script><p>We can then start working on middle part $\mathbb{E}_{t}[2(y(\mathbf{x}) - \mathbb{E}[t|\mathbf{x}])(\mathbb{E}[t|\mathbf{x}] - t)]$</p>
+<script type="math/tex; mode=display">\begin{align*}&\mathbb{E}[\mathbb{E}_{t}[2(y(\mathbf{x}) - \mathbb{E}[t|\mathbf{x}])(\mathbb{E}[t|\mathbf{x}] - t)|\mathbf{x}]] \\
+&= \mathbb{E}[\mathbb{E}_{t}[2(y(\mathbf{x}) - \mathbb{E}[t|\mathbf{x}])|\mathbf{x}]\mathbb{E}_{t}[\mathbb{E}[t|\mathbf{x}] - t]|\mathbf{x}]] \\
+&= \mathbb{E}[(\mathbb{E}_{t}[2y(\mathbf{x})|\mathbf{x}] - \mathbb{E}_{t}[2\mathbb{E}_{t}[t|\mathbf{x}]|\mathbf{x}])(\mathbb{E}_{t}[\mathbb{E}_{t}[t|\mathbf{x}]|\mathbf{x}] - \mathbb{E}_{t}[t|\mathbf{x}]|\mathbf{x}])]\end{align*}</script><p>notice that we can use the trick that we used in the last part to move inside expectation to the outside, so the component in red become: </p>
+<script type="math/tex; mode=display">\begin{align*}\mathbb{E}_{t}[\mathbb{E}_{t}[t|\mathbf{x}]|\mathbf{x}] - \mathbb{E}_{t}[t|\mathbf{x}] &= \mathbb{E}_{t}[t|\mathbf{x}] - \mathbb{E}_{t}[t|\mathbf{x}] \\
+&= 0\end{align*}</script><p>So the middle term become 0</p>
+<p>Finally for the last part <em>\mathbb{E}_{t}[(\mathbb{E}[t|\mathbf{x}] - t)^2|\mathbf{x}]</em></p>
+<script type="math/tex; mode=display">\begin{align*}\mathbb{E}_{t}[(\mathbb{E}[t|\mathbf{x}] - t)^2|\mathbf{x}] &= \mathbb{E}_{t}[(\mathbb{E}_{t}[t|\mathbf{x}])^2|\mathbf{x}] - 2\mathbb{E}_{t}[\mathbb{E}_{t}[t|\mathbf{x}]|\mathbf{x}]]\mathbb{E}_{t}[t|\mathbf{x}] + \mathbb{E}_{t}[t^2|\mathbf{x}] \\
+&= \mathbb{E}_{t}[t|\mathbf{x}]^2 - 2\mathbb{E}_{t}[t|\mathbf{x}]\mathbb{E}_{t}[t|\mathbf{x}] + \mathbb{E}_{t}[t^2|\mathbf{x}] \\
+&= \mathbb{E}_{t}[t^2|\mathbf{x}] - \mathbb{E}_{t}[t|\mathbf{x}]^2 \\
+&= Var[t|\mathbf{x}]\end{align*}</script><p>The whole equation now can be written as:</p>
+<script type="math/tex; mode=display">\begin{align*}\mathbb{E}[L] = \mathbb{E}_{t}[(y(\mathbf{x}) - t)^2|\mathbf{x}] +  \end{align*}</script><p>We can write it in interal form so it will be<br>$\mathbb{E}[L] = \int (y(\mathbf{x}) - \mathbb{E}[t|\mathbf{x}])^2\mathrm{d}\mathbf{x} + \int Var(t|x) \mathrm{d}\mathbf{x}$</p>
+<p>You will notice that the </p>
 
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-machine learning" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/29/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bilaer">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Just Some Thoughts">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/06/29/hello-world/" class="post-title-link" itemprop="url">PRML Reading Note - Conditional and Marginal Multivariate Gaussian</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-29 00:35:08 / Modified: 22:29:52" itemprop="dateCreated datePublished" datetime="2019-06-29T00:35:08+08:00">2019-06-29</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h2><h2 id="This-bilaer"><a href="#This-bilaer" class="headerlink" title="This bilaer"></a>This bilaer</h2><script type="math/tex; mode=display">\frac{\partial u}{\partial t}
+= h^2 \left( \frac{\partial^2 u}{\partial x^2} +
+\frac{\partial^2 u}{\partial y^2} +
+\frac{\partial^2 u}{\partial z^2}\right)</script>
           
         
       
@@ -455,7 +632,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -650,6 +827,8 @@
         
       
     
+      
+    
   
 
   
@@ -689,7 +868,24 @@
     }
   });
 </script>
-<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
     
   

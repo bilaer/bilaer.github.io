@@ -94,17 +94,17 @@
 
 
 
-  <meta name="description" content="TestThis bilaer\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}\right)">
+  <meta name="description" content="Preliminary \mathbb{E}[X] = \mathbb{E}[\mathbb{E}(X|Y)] Var[X] = \mathbb{E}[X^2] - \mathbb{E}[X]^2  ProofFirstly, we can expand the square term as book: \begin{align*}\mathbb{E}[L] &amp;= \mathbb{E}[(y(\m">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PRML Reading Note - Conditional and Marginal Multivariate Gaussian">
-<meta property="og:url" content="http://yoursite.com/2019/06/29/hello-world/index.html">
+<meta property="og:title" content="PRML Reading Note 1 - 1.5.5 Square Loss Step By Step Proof">
+<meta property="og:url" content="http://yoursite.com/2019/06/29/ml-note/index.html">
 <meta property="og:site_name" content="Just Some Thoughts">
-<meta property="og:description" content="TestThis bilaer\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}\right)">
+<meta property="og:description" content="Preliminary \mathbb{E}[X] = \mathbb{E}[\mathbb{E}(X|Y)] Var[X] = \mathbb{E}[X^2] - \mathbb{E}[X]^2  ProofFirstly, we can expand the square term as book: \begin{align*}\mathbb{E}[L] &amp;= \mathbb{E}[(y(\m">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-06-29T14:29:52.661Z">
+<meta property="og:updated_time" content="2019-06-29T15:00:52.600Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PRML Reading Note - Conditional and Marginal Multivariate Gaussian">
-<meta name="twitter:description" content="TestThis bilaer\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}\right)">
+<meta name="twitter:title" content="PRML Reading Note 1 - 1.5.5 Square Loss Step By Step Proof">
+<meta name="twitter:description" content="Preliminary \mathbb{E}[X] = \mathbb{E}[\mathbb{E}(X|Y)] Var[X] = \mathbb{E}[X^2] - \mathbb{E}[X]^2  ProofFirstly, we can expand the square term as book: \begin{align*}\mathbb{E}[L] &amp;= \mathbb{E}[(y(\m">
 
 
 
@@ -112,7 +112,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/06/29/hello-world/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/29/ml-note/">
 
 
 
@@ -122,7 +122,7 @@
   };
 </script>
 
-  <title>PRML Reading Note - Conditional and Marginal Multivariate Gaussian | Just Some Thoughts</title>
+  <title>PRML Reading Note 1 - 1.5.5 Square Loss Step By Step Proof | Just Some Thoughts</title>
   
 
 
@@ -280,12 +280,12 @@
 
   
 
-  <article class="post post-type-machine learning" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/29/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/29/ml-note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bilaer">
@@ -302,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">PRML Reading Note - Conditional and Marginal Multivariate Gaussian
+          <h1 class="post-title" itemprop="name headline">PRML Reading Note 1 - 1.5.5 Square Loss Step By Step Proof
 
               
             
@@ -328,7 +328,7 @@
                 
               
 
-              <time title="Created: 2019-06-29 00:35:08 / Modified: 22:29:52" itemprop="dateCreated datePublished" datetime="2019-06-29T00:35:08+08:00">2019-06-29</time>
+              <time title="Created: 2019-06-29 11:31:21 / Modified: 23:00:52" itemprop="dateCreated datePublished" datetime="2019-06-29T11:31:21+08:00">2019-06-29</time>
             </span>
           
 
@@ -370,10 +370,37 @@
       
 
       
-        <h2 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h2><h2 id="This-bilaer"><a href="#This-bilaer" class="headerlink" title="This bilaer"></a>This bilaer</h2><script type="math/tex; mode=display">\frac{\partial u}{\partial t}
-= h^2 \left( \frac{\partial^2 u}{\partial x^2} +
-\frac{\partial^2 u}{\partial y^2} +
-\frac{\partial^2 u}{\partial z^2}\right)</script>
+        <h1 id="Preliminary"><a href="#Preliminary" class="headerlink" title="Preliminary"></a>Preliminary</h1><ol>
+<li><script type="math/tex; mode=display">\mathbb{E}[X] = \mathbb{E}[\mathbb{E}(X|Y)]</script></li>
+<li><script type="math/tex; mode=display">Var[X] = \mathbb{E}[X^2] - \mathbb{E}[X]^2</script></li>
+</ol>
+<h1 id="Proof"><a href="#Proof" class="headerlink" title="Proof"></a>Proof</h1><p>Firstly, we can expand the square term as book:</p>
+<script type="math/tex; mode=display">\begin{align*}\mathbb{E}[L] &= \mathbb{E}[(y(\mathbf(x)) - \mathbb{E}[t|\mathbf{x}] + \mathbb{E}[t|\mathbf{x}] - t)^2] \\
+&= \mathbb{E}[(y(\mathbf(x)) - \mathbb{E}[t|\mathbf{x}])^2 +2(y(\mathbf(x)) - \mathbb{E}[t|\mathbf{x}])(\mathbb{E}[t|\mathbf{x}] - t) + (\mathbb{E}[t|\mathbf{x}] - t)^2]\end{align*}</script><p>Then using Law of Total Expectation, we can obtain:</p>
+<script type="math/tex; mode=display">\begin{align*}\mathbb{E}[L] &= \mathbb{E}_{t}[\mathbb{E}[L|\mathbf{x}]] \\
+&= \mathbb{E}_{t}[\mathbb{E}[(y(\mathbf{x}) - \mathbb{E}[t|\mathbf{x}])^2 + 2(y(\mathbf{x}) - \mathbb{E}[t|\mathbf{x}])(\mathbb{E}[t|\mathbf{x}] - t) + (\mathbb{E}[t|\mathbf{x}] - t)^2|\mathbf{x}]] \\
+&= \mathbb{E}_{t}[\mathbb{E}[(y(\mathbf{x}) - \mathbb{E}[t|\mathbf{x}])^2|\mathbf{x}]] + \mathbb{E}[2(y(\mathbf{x}) - \mathbb{E}[t|\mathbf{x}])(\mathbb{E}[t|\mathbf{x}] - t)|\mathbb{x}]] \\
+&+ \mathbb{E}[(\mathbb{E}[t|\mathbf{x}] - t)^2|\mathbf{x}]]
+\end{align*}</script><p>Now let us focus on the first part $\mathbb{E}_{t}[\mathbb{E}[(y(\mathbf{x}) - \mathbb{E}<br>[t|\mathbf{x}])^2|\mathbf{x}]]$<br>We can actually ignore the the outside expecation and focus on thing inside:</p>
+<script type="math/tex; mode=display">\begin{align*}\mathbb{E}_{t}[\mathbb{E}[(y(\mathbf{x}) - \mathbb{E}[t|\mathbf{x}])^2|\mathbf{x}] &= \mathbb{E}_{t}[\mathbb{E}[(y(\mathbf{x})^2 - 2y(\mathbf{x})\mathbb{E}[t|\mathbf{x}] + (\mathbb{E}_{t}[t|\mathbf{x}])^2|\mathbf{x}]] \\
+&= \mathbb{E}_{t}[\mathbb{E}[y(\mathbf{x})^2|\mathbf{x}] - \mathbb{E}[(2y(\mathbf{x})\mathbb{E}[t|\mathbf{x}])|\mathbf{x}] + \mathbb{E}[(\mathbb{E}_{t}[t|\mathbf{x}])^2|\mathbf{x}]] \\
+&= \mathbb{E}_{t}[\mathbb{E}[y(\mathbf{x})^2|\mathbf{x}] - 2\mathbb{E}[y(\mathbf{x})|\mathbf{x}]\mathbb{E}[\mathbb{E}[t|\mathbf{x}]|\mathbf{x}] + \mathbb{E}[(\mathbb{E}_{t}[t|\mathbf{x}])^2|\mathbf{x}]]\end{align*}</script><p>Notice that $\mathbb{E}[t|\mathbf{x}]$ and $\mathbb{E}_{t}[t|\mathbf{x}])^2$ are constant (expectation is constant). Since the expectation of constant is also constant, we can take them out of the expecation: $\mathbb{E}_{t}[(\mathbb{E}_{t}[t|\mathbf{x}])^2|\mathbf{x}] = \mathbb{E}_{t}[t|\mathbf{x}]^2<br>, \mathbb{E}_{t}[\mathbb{E}[t|\mathbf{x}]|\mathbf{x}] = \mathbb{E}[t|\mathbf{x}]$</p>
+<script type="math/tex; mode=display">\begin{align*}&\mathbb{E}_{t}[\mathbb{E}[y(\mathbf{x})^2|\mathbf{x}] - 2\mathbb{E}[y(\mathbf{x})|\mathbf{x}]\mathbb{E}[\mathbb{E}[t|\mathbf{x}]|\mathbf{x}] + \mathbb{E}[(\mathbb{E}_{t}[t|\mathbf{x}])^2|\mathbf{x}]] \\
+&= \mathbb{E}_{t}[\mathbb{E}[y(\mathbf{x})^2|\mathbf{x}] - 2\mathbb{E}[y(\mathbf{x})|\mathbf{x}]\mathbb{E}[t|\mathbf{x}] + \mathbb{E}[t|\mathbf{x}]^2] \\
+&= \mathbb{E}_{t}[(y(\mathbf{x}) - \mathbb{E}_{t}[t|\mathbf{x}])^2|\mathbf{x}]\end{align*}</script><p>We can then start working on middle part $\mathbb{E}_{t}[2(y(\mathbf{x}) - \mathbb{E}[t|\mathbf{x}])(\mathbb{E}[t|\mathbf{x}] - t)]$</p>
+<script type="math/tex; mode=display">\begin{align*}&\mathbb{E}[\mathbb{E}_{t}[2(y(\mathbf{x}) - \mathbb{E}[t|\mathbf{x}])(\mathbb{E}[t|\mathbf{x}] - t)|\mathbf{x}]] \\
+&= \mathbb{E}[\mathbb{E}_{t}[2(y(\mathbf{x}) - \mathbb{E}[t|\mathbf{x}])|\mathbf{x}]\mathbb{E}_{t}[\mathbb{E}[t|\mathbf{x}] - t]|\mathbf{x}]] \\
+&= \mathbb{E}[(\mathbb{E}_{t}[2y(\mathbf{x})|\mathbf{x}] - \mathbb{E}_{t}[2\mathbb{E}_{t}[t|\mathbf{x}]|\mathbf{x}])(\mathbb{E}_{t}[\mathbb{E}_{t}[t|\mathbf{x}]|\mathbf{x}] - \mathbb{E}_{t}[t|\mathbf{x}]|\mathbf{x}])]\end{align*}</script><p>notice that we can use the trick that we used in the last part to move inside expectation to the outside, so the component in red become: </p>
+<script type="math/tex; mode=display">\begin{align*}\mathbb{E}_{t}[\mathbb{E}_{t}[t|\mathbf{x}]|\mathbf{x}] - \mathbb{E}_{t}[t|\mathbf{x}] &= \mathbb{E}_{t}[t|\mathbf{x}] - \mathbb{E}_{t}[t|\mathbf{x}] \\
+&= 0\end{align*}</script><p>So the middle term become 0</p>
+<p>Finally for the last part <em>\mathbb{E}_{t}[(\mathbb{E}[t|\mathbf{x}] - t)^2|\mathbf{x}]</em></p>
+<script type="math/tex; mode=display">\begin{align*}\mathbb{E}_{t}[(\mathbb{E}[t|\mathbf{x}] - t)^2|\mathbf{x}] &= \mathbb{E}_{t}[(\mathbb{E}_{t}[t|\mathbf{x}])^2|\mathbf{x}] - 2\mathbb{E}_{t}[\mathbb{E}_{t}[t|\mathbf{x}]|\mathbf{x}]]\mathbb{E}_{t}[t|\mathbf{x}] + \mathbb{E}_{t}[t^2|\mathbf{x}] \\
+&= \mathbb{E}_{t}[t|\mathbf{x}]^2 - 2\mathbb{E}_{t}[t|\mathbf{x}]\mathbb{E}_{t}[t|\mathbf{x}] + \mathbb{E}_{t}[t^2|\mathbf{x}] \\
+&= \mathbb{E}_{t}[t^2|\mathbf{x}] - \mathbb{E}_{t}[t|\mathbf{x}]^2 \\
+&= Var[t|\mathbf{x}]\end{align*}</script><p>The whole equation now can be written as:</p>
+<script type="math/tex; mode=display">\begin{align*}\mathbb{E}[L] = \mathbb{E}_{t}[(y(\mathbf{x}) - t)^2|\mathbf{x}] +  \end{align*}</script><p>We can write it in interal form so it will be<br>$\mathbb{E}[L] = \int (y(\mathbf{x}) - \mathbb{E}[t|\mathbf{x}])^2\mathrm{d}\mathbf{x} + \int Var(t|x) \mathrm{d}\mathbf{x}$</p>
+<p>You will notice that the </p>
+
       
     </div>
 
@@ -403,15 +430,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/06/29/hello-world/" rel="next" title="PRML Reading Note - Conditional and Marginal Multivariate Gaussian">
+                <i class="fa fa-chevron-left"></i> PRML Reading Note - Conditional and Marginal Multivariate Gaussian
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/29/ml-note/" rel="prev" title="PRML Reading Note 1 - 1.5.5 Square Loss Step By Step Proof">
-                PRML Reading Note 1 - 1.5.5 Square Loss Step By Step Proof <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -522,7 +549,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Test"><span class="nav-number">1.</span> <span class="nav-text">Test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#This-bilaer"><span class="nav-number">2.</span> <span class="nav-text">This bilaer</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Preliminary"><span class="nav-number">1.</span> <span class="nav-text">Preliminary</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Proof"><span class="nav-number">2.</span> <span class="nav-text">Proof</span></a></li></ol></div>
             
 
           </div>
